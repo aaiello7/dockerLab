@@ -4,6 +4,7 @@ import random
 app = Flask(__name__)
 
 # list of cat images
+
 images = [
     "https://media2.giphy.com/media/cfuL5gqFDreXxkWQ4o/giphy.gif?cid=ecf05e4760qvxlezzdwgf3ye088c9dq20f2pazwrznas2md8&rid=giphy.gif&ct=g"
     ]
