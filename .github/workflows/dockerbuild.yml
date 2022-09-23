@@ -7,7 +7,7 @@ on:
 
 jobs:
 
-  build:
+  docker-build:
     runs-on: ubuntu-latest
     steps:
 
@@ -38,3 +38,22 @@ jobs:
         run: |
           docker build -t aaiello7/flaskapp:${{ env.GITHUBRUNNERID }} .
           docker push aaiello7/flaskapp:${{ env.GITHUBRUNNERID }}
+
+  dev-kube-deploy:
+    runs-on: ubuntu-latest
+    needs: [docker-build]
+    steps: 
+
+      - name: Checkout the code
+        uses: actions/checkout@v3
+
+      - name: Manipulate the Kubernetes Image Version
+        run: |
+        cp kubetemplate/flaskapp-template.yml kubefiles/flaskapp-pod.yml
+        sed -i 's/APPVERSION/${{ env.GITHUBRUNNERID }}/g' kubefiles/flaskapp-pod.yml
+
+      - name: Commit and Push
+        uses: devops-infra/action-commit-push@master
+        with: 
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          commit_message: Version Update
