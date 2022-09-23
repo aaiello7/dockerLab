@@ -7,7 +7,7 @@ metadata:
   name: flaskapp-pod
 spec:
   containers:
-  - image: nginx
+  - image: aaiello7/flaskapp:APPVERSION
     name: flaskapp-pod
     resources: {}
   dnsPolicy: ClusterFirst
