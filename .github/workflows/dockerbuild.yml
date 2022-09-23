@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env: 
+  GITHUBRUNNERID: $GITHUB_RUN_NUMBER
+
 jobs:
 
   docker-build:
