@@ -36,5 +36,5 @@ jobs:
 
       - name: Manual deploy
         run: |
-          docker build -t nishanthkp/myfirstapp:${{ env.GITHUBRUNNERID }} .
-          docker push nishanthkp/myfirstapp:${{ env.GITHUBRUNNERID }}
+          docker build -t aaiello7/myfirstapp:${{ env.GITHUBRUNNERID }} .
+          docker push aaiello7/myfirstapp:${{ env.GITHUBRUNNERID }}
