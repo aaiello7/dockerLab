@@ -50,7 +50,7 @@ jobs:
       - name: Manipulate the Kubernetes Image Version
         run: |
           cp kubetemplate/flaskapp-template.yml kubefiles/flaskapp-pod.yml
-          sed -i 's/APPVERSION/${{ env.GITHUBRUNNERID }}/g' kubefiles/flaskapp-pod.yml
+          sed -i "s/APPVERSION/${{ env.GITHUBRUNNERID }}/g" kubefiles/flaskapp-pod.yml
 
       - name: Commit and Push
         uses: devops-infra/action-commit-push@master
